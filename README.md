@@ -34,13 +34,15 @@ It's just a library you can import everywhere! That's it, no CLI, no configurati
 ```typescript
 import { bench } from "@hazae41/deimos"
 
-await bench("my library", async () => {
-  await mine.compute()
+const a = await bench("my library", async () => {
+  await compute()
 })
 
-await bench("some other library", async () => {
-  await other.compute()
+const b = await bench("some other library", async () => {
+  await compute2()
 })
+
+console.log(`${a.message} is ${a.ratio(b)} times faster than ${b.message}`)
 ```
 
 ```bash
