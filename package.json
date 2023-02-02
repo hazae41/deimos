@@ -1,7 +1,7 @@
 {
   "type": "module",
   "name": "@hazae41/deimos",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Modern and minimalist benchmarking library for the web",
   "homepage": "https://github.com/hazae41/deimos",
   "repository": "github:hazae41/deimos",
