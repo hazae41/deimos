@@ -6,7 +6,12 @@ export class Result {
     readonly average: number,
   ) { }
 
+  /**
+   * How much faster is this compared to other
+   * @param other 
+   * @returns 
+   */
   ratio(other: Result) {
-    return this.average / other.average
+    return other.average / this.average
   }
 }
