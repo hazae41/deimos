@@ -1,9 +1,14 @@
+import { Millis } from "libs/millis/millis.js"
+
 export class Result {
 
   constructor(
     readonly message: string,
     readonly samples: number,
     readonly average: number,
+    readonly minimum: number,
+    readonly maximum: number,
+    readonly results: number[]
   ) { }
 
   /**
@@ -13,5 +18,33 @@ export class Result {
    */
   ratio(other: Result) {
     return other.average / this.average
+  }
+
+  table(...others: Result[]) {
+    const results = [this, ...others]
+
+    let rows: any = {}
+
+    for (const result of results) {
+      const average = `${Millis.toUnitString(result.average)}/iter`
+      const minimum = Millis.toUnitString(result.minimum)
+      const maximum = Millis.toUnitString(result.maximum)
+      rows[result.message] = { average, minimum, maximum }
+    }
+
+    console.table(rows)
+  }
+
+  summary(...others: Result[]) {
+    console.info("Summary")
+
+    for (const other of others)
+      console.info(`- ${this.message} is ${this.ratio(other).toFixed(2)}x faster than ${other.message}`)
+  }
+
+  tableAndSummary(...others: Result[]) {
+    this.table(...others)
+    console.info()
+    this.summary(...others)
   }
 }
