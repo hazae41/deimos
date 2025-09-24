@@ -36,8 +36,6 @@ export class Result {
   }
 
   summary(...others: Result[]) {
-    console.info("Summary")
-
     for (const other of others)
       console.info(`- ${this.message} is ${this.ratio(other).toFixed(2)}x faster than ${other.message}`)
   }
