@@ -54,13 +54,13 @@ console.log(`${a.message} is ${a.ratio(b)} times faster than ${b.message}`)
 #### Node
 
 ```bash
-node ./out/**/*.bench.js
+node --test --test-concurrency=1 ./out/**/*.bench.js
 ```
 
 #### Deno
 
 ```bash
-deno bench ./src
+deno test ./src/**/*.bench.ts
 ```
 
 #### Other
