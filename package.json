@@ -1,57 +1,26 @@
 {
   "type": "module",
   "name": "@hazae41/deimos",
-  "version": "1.0.6",
-  "description": "Modern and minimalist benchmarking library for the web",
-  "homepage": "https://github.com/hazae41/deimos",
+  "description": "Modern and minimalist benchmarking library",
+  "version": "2.0.0",
   "repository": "github:hazae41/deimos",
   "author": "hazae41",
-  "license": "MIT",
-  "main": "./dist/cjs/index.cjs",
-  "module": "./dist/esm/index.mjs",
-  "types": "./dist/types/index.d.ts",
-  "sideEffects": false,
-  "files": [
-    "./dist/esm",
-    "./dist/cjs",
-    "./dist/types"
-  ],
   "scripts": {
-    "build": "rimraf dist && rollup -c",
-    "test": "node ./dist/test/index.test.mjs",
-    "prepare": "npm run build"
+    "prepare": "rm -rf ./out && tsc && tscousin",
+    "version": "deno -RW ./vsync.ts && git add deno.json"
   },
-  "devDependencies": {
-    "@rollup/plugin-inject": "^5.0.3",
-    "@rollup/plugin-typescript": "^11.0.0",
-    "@types/node": "^18.13.0",
-    "rimraf": "^4.1.2",
-    "rollup": "^3.14.0",
-    "rollup-plugin-dts": "^5.1.1",
-    "rollup-plugin-node-externals": "^5.1.2",
-    "typescript": "^4.9.5"
-  },
+  "files": [
+    "./out"
+  ],
   "exports": {
     ".": {
-      "types": "./dist/types/index.d.ts",
-      "import": "./dist/esm/index.mjs",
-      "require": "./dist/cjs/index.cjs"
+      "types": "./out/mod.d.ts",
+      "import": "./out/mod.js"
     }
   },
-  "keywords": [
-    "deimos",
-    "bench",
-    "benchmarking",
-    "speed-test",
-    "speed-testing",
-    "runner",
-    "typescript",
-    "fast",
-    "minimalist",
-    "esmodules",
-    "parallel",
-    "concurrent",
-    "asynchronous",
-    "browser"
-  ]
+  "devDependencies": {
+    "@hazae41/tscousin": "^1.0.11",
+    "@types/node": "^24.5.2",
+    "typescript": "^5.9.2"
+  }
 }

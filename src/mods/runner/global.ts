@@ -1,13 +1,13 @@
-import { Context } from "mods/runner/context.js";
-import { BenchError } from "mods/runner/error.js";
-import { Result } from "mods/runner/result.js";
+import { Context } from "@/mods/runner/context.ts";
+import { BenchError } from "@/mods/runner/error.ts";
+import { Result } from "@/mods/runner/result.ts";
 
 export interface BenchParams {
   samples?: number,
   warmup?: boolean
 }
 
-export async function bench(message: string, closure: (context: Context) => Promise<void>, params: BenchParams = {}) {
+export async function bench(message: string, closure: (context: Context) => Promise<void>, params: BenchParams = {}): Promise<Result> {
   try {
     const { samples = 1_000_000, warmup = true } = params
 
@@ -56,7 +56,7 @@ export async function bench(message: string, closure: (context: Context) => Prom
   }
 }
 
-export function benchSync(message: string, closure: (context: Context) => void, params: BenchParams = {}) {
+export function benchSync(message: string, closure: (context: Context) => void, params: BenchParams = {}): Result {
   try {
     const { samples = 1_000_000, warmup = true } = params
 

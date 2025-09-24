@@ -6,26 +6,14 @@ Modern and minimalist benchmarking library
 </h3>
 
 ```bash
-npm i @hazae41/deimos
+npm install @hazae41/deimos
 ```
 
-[**Node Package 📦**](https://www.npmjs.com/package/@hazae41/deimos)
-
+```bash
+deno install jsr:@hazae41/deimos
 ```
-src/node/bench/xor_mod.bench.ts
-cpu: Apple M1 Max
-runtime: node v18.12.1 (arm64-darwin)
 
-┌─────────┬──────────────────┬─────────────┬─────────────┐
-│ (index) │     average      │   minimum   │   maximum   │
-├─────────┼──────────────────┼─────────────┼─────────────┤
-│  wasm   │ '880.48 ns/iter' │ '750.00 ns' │ '154.00 μs' │
-│   js    │ '17.71 μs/iter'  │ '17.42 μs'  │ '610.67 μs' │
-└─────────┴──────────────────┴─────────────┴─────────────┘
-
-Summary
-- wasm is 20.11x faster than js
-```
+[**📦 NPM**](https://www.npmjs.com/package/@hazae41/deimos) • [**📦 JSR**](https://jsr.io/@hazae41/deimos)
 
 ## Philosophy 🧠
 
@@ -61,46 +49,22 @@ const b = await bench("some other library", async () => {
 console.log(`${a.message} is ${a.ratio(b)} times faster than ${b.message}`)
 ```
 
-```bash
-ts-node --esm ./bench.ts
-```
-
-## Setting up 🔧
-
-Most setups will just need a custom entry point that imports all your benchs, that you either run as-is using `ts-node`, or that you transpile using your favorite bundler.
-
-For example, the entry point `index.bench.ts` imports:
-  - `some-module/index.bench.ts`, which imports:
-    - `some-module/some-file.bench.ts`
-    - `some-module/some-other-file.bench.ts`
-  - `some-other-module/index.bench.ts`, which imports:
-    - `some-other-module/some-file.bench.ts`
-    - `some-other-module/some-other-file.bench.ts`
-
-You can see an example on this repository, all benchs are imported in `src/index.bench.ts`, then we use Rollup to transpile it into `dist/test/index.bench.cjs`, which we then run using Node with `node ./dist/test/index.bench.cjs`.
-
 ## Running 🏎️
 
-#### Using a bundler
+#### Node
 
 ```bash
-node ./dist/test/index.bench.cjs
+node ./out/**/*.bench.js
 ```
 
-#### Using ts-node with ESM
+#### Deno
 
 ```bash
-ts-node --esm ./src/index.bench.ts
+deno bench ./src
 ```
 
-#### Using ts-node with ESM and ttypescript
-
-```bash
-ts-node --esm --compiler ttypescript ./src/index.bench.ts
-```
-
-#### Using dynamic import
+#### Other
 
 ```typescript
-await import("index.bench.ts")
+await import("./mymodule.bench.ts")
 ```

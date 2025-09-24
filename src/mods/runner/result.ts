@@ -1,4 +1,4 @@
-import { Millis } from "libs/millis/millis.js"
+import { Millis } from "@/libs/millis/millis.ts"
 
 export class Result {
 
@@ -16,14 +16,14 @@ export class Result {
    * @param other 
    * @returns 
    */
-  ratio(other: Result) {
+  ratio(other: Result): number {
     return other.average / this.average
   }
 
   table(...others: Result[]) {
     const results = [this, ...others]
 
-    let rows: any = {}
+    const rows: Record<string, unknown> = {}
 
     for (const result of results) {
       const average = `${Millis.toUnitString(result.average)}/iter`
