@@ -1,7 +1,7 @@
 export class Context {
 
   constructor(
-    readonly message: string
+    readonly name: string
   ) { }
 
 }

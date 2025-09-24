@@ -8,11 +8,11 @@ export interface BenchParams {
   readonly warmup?: boolean
 }
 
-export async function bench(message: string, closure: (context: Context) => Promise<void>, params: BenchParams = {}): Promise<Result> {
+export async function bench(name: string, closure: (context: Context) => Promise<void>, params: BenchParams = {}): Promise<Result> {
   try {
     const { samples = 1_000_000, warmup = true } = params
 
-    const context = new Context(message)
+    const context = new Context(name)
 
     if (warmup) {
       const warmups = new Array<number>(samples)
@@ -51,17 +51,17 @@ export async function bench(message: string, closure: (context: Context) => Prom
 
     const average = sum / samples
 
-    return new Result(message, samples, average, minimum, maximum, results)
+    return new Result(name, samples, average, minimum, maximum, results)
   } catch (cause: unknown) {
-    throw new BenchError(message, { cause })
+    throw new BenchError(name, { cause })
   }
 }
 
-export function benchSync(message: string, closure: (context: Context) => void, params: BenchParams = {}): Result {
+export function benchSync(name: string, closure: (context: Context) => void, params: BenchParams = {}): Result {
   try {
     const { samples = 1_000_000, warmup = true } = params
 
-    const context = new Context(message)
+    const context = new Context(name)
 
     if (warmup) {
       const warmups = new Array<number>(samples)
@@ -100,8 +100,8 @@ export function benchSync(message: string, closure: (context: Context) => void, 
 
     const average = sum / samples
 
-    return new Result(message, samples, average, minimum, maximum, results)
+    return new Result(name, samples, average, minimum, maximum, results)
   } catch (cause: unknown) {
-    throw new BenchError(message, { cause })
+    throw new BenchError(name, { cause })
   }
 }

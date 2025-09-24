@@ -46,7 +46,9 @@ const b = await bench("some other library", async () => {
   await compute2()
 })
 
-console.log(`${a.message} is ${a.ratio(b)} times faster than ${b.message}`)
+a.tableAndSummary(b)
+
+console.log(`${a.name} is ${a.ratio(b)} times faster than ${b.name}`)
 ```
 
 ## Running 🏎️
