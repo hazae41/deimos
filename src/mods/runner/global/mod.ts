@@ -1,10 +1,11 @@
-import { Context } from "@/mods/runner/context.ts";
-import { BenchError } from "@/mods/runner/error.ts";
-import { Result } from "@/mods/runner/result.ts";
+import { Context } from "../context/mod.ts";
+import { Result } from "../result/mod.ts";
+
+export class BenchError extends Error { }
 
 export interface BenchParams {
-  samples?: number,
-  warmup?: boolean
+  readonly samples?: number,
+  readonly warmup?: boolean
 }
 
 export async function bench(message: string, closure: (context: Context) => Promise<void>, params: BenchParams = {}): Promise<Result> {

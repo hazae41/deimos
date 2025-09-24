@@ -1,5 +1,4 @@
-export * from "./context.ts";
-export * from "./error.ts";
-export * from "./global.ts";
-export * from "./result.ts";
+export * from "./context/mod.ts";
+export * from "./global/mod.ts";
+export * from "./result/mod.ts";
 
