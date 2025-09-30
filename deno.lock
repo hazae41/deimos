@@ -1,9 +1,15 @@
 {
   "version": "5",
   "specifiers": {
+    "jsr:@hazae41/tscousin@^1.0.11": "1.0.18",
     "npm:@hazae41/tscousin@^1.0.11": "1.0.11",
     "npm:@types/node@^24.5.2": "24.5.2",
     "npm:typescript@^5.9.2": "5.9.2"
+  },
+  "jsr": {
+    "@hazae41/tscousin@1.0.18": {
+      "integrity": "054bba2e4623cccb99fdecd6b94442af1bac53eb5f7993562727e5975ea2e40d"
+    }
   },
   "npm": {
     "@hazae41/tscousin@1.0.11": {
@@ -25,6 +31,9 @@
     }
   },
   "workspace": {
+    "dependencies": [
+      "jsr:@hazae41/tscousin@^1.0.11"
+    ],
     "packageJson": {
       "dependencies": [
         "npm:@hazae41/tscousin@^1.0.11",
