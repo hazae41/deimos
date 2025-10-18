@@ -2,7 +2,7 @@
   "type": "module",
   "name": "@hazae41/deimos",
   "description": "Modern and minimalist benchmarking library",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "repository": "github:hazae41/deimos",
   "author": "hazae41",
   "scripts": {
